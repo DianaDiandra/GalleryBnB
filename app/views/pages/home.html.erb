@@ -1,2 +1,51 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div id="artCarousel" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+
+    <div class="carousel-item active">
+      <div class="row g-0 position-relative">
+        <div class="hero-content-container col-12 col-lg-5 d-flex align-items-center pt-2 p-lg-0 hero-col position-relative" style="background-color: #740218;">
+          <div class="hero-content w-100">
+            <h2 class="text-white text-uppercase text-center text-lg-start hero-title">ARTISTRY IN ARCHITECTURE</h2>
+            <p class="h5 text-white text-center text-lg-start hero-subtitle">
+              A curated selection by IannisArt
+            </p>
+          </div>
+        </div>
+        <div class="col-12 col-lg-7">
+         <div class="overlay d-flex gap-2">
+          <%= cl_image_tag("ytppvyxk8sgbzhorwikw", width: 600, height: 600, crop: :fill, gravity: :center, class: "img-fluid") %>
+          <%= cl_image_tag("hvfwli2cmednrmthtye9", width: 600, height: 600, crop: :fill, gravity: :center, class: "img-fluid") %>
+         </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="carousel-item">
+      <div class="row g-0 position-relative">
+        <div class="hero-content-container col-12 col-lg-5 d-flex align-items-center pt-2 p-lg-0 hero-col position-relative" style="background-color: #004080;">
+          <div class="hero-content w-100">
+            <h2 class="text-white text-uppercase text-center text-lg-start hero-title">Discover New Art</h2>
+            <p class="h5 text-white text-center text-lg-start hero-subtitle">
+              Explore our latest collections
+            </p>
+          </div>
+        </div>
+        <div class="col-12 col-lg-7">
+          <div class="overlay">
+            <img class="img-fluid" src="//cdn.artmajeur.com/img/home/slider/fusion/image.png" alt="Online Art Gallery">
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <button class="carousel-control-prev" type="button" data-bs-target="#artCarousel" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#artCarousel" data-bs-slide="next">
+    <span class="carousel-control-next-icon"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>

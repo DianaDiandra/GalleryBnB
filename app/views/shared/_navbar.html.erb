@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <%= link_to root_path, class: "navbar-brand" do %>
       <%= cl_image_tag("envdczxx6dlicggbygwg", width: 50, height: 50, crop: :fill, class: "d-inline-block align-top") %>
-      <span class="fw-bold">GalleryBnB</span>
+      <%# <%= cl_image_tag("gdgpxi5mxjwydqvbvknf", width: 100, height: 100, crop: :fill, class: "d-inline-block align-top") %> 
     <% end %>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -34,7 +34,7 @@
           </li>
         <% end %>
       </ul>
-      <%= link_to "Home", root_path, class: "nav-link text-decoration-none text-reset" %>
+      <%= link_to "Home", root_path, class: "nav-link text-decoration-none text-reset nav-link" %>
     </div>
   </div>
 </div>
