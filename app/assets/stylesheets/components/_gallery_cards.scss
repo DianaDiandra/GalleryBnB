@@ -1,16 +1,27 @@
-.cards {
-  .col {
-    margin-bottom: 1.5rem;
+.artist-showcase-section {
+  .intro-section {
+    max-width: 800px;
+    margin: 0 auto;
+  }
 
-    .card {
-      border-radius: 0.75rem;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+  .card {
+    border-radius: 1rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 
-      &:hover {
-        transform: translateY(-8px);
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-        cursor: pointer;
-      }
+    &.hover-effect:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+      cursor: pointer;
     }
   }
+
+  .card-title {
+    font-size: 1.1rem;
+    color: #212529;
+  }
+
+  .card-text {
+    font-size: 0.9rem;
+  }
 }
+
