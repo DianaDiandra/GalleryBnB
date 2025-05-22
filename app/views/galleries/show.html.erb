@@ -1,2 +1,16 @@
-<h1>Galleries#show</h1>
-<p>Find me in app/views/galleries/show.html.erb</p>
+<div class="artist-profile-container">
+  <div class="header-section">
+    <div class="artist-image">
+      <% if @gallery.image.attached? %>
+        <%= image_tag url_for(@gallery.image), alt: @gallery.artist %>
+      <% end %>
+    </div>
+    <div class="artist-info">
+      <h1><%= @gallery.artist %></h1>
+      <p><%= @gallery.date.strftime("%B %d, %Y") if @gallery.date %></p>
+    </div>
+  </div>
+</div>
+<div class="description-section">
+  <p><%= @gallery.description %></p>
+</div>
