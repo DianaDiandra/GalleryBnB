@@ -1,6 +1,5 @@
-<div id="artCarousel" class="carousel slide" data-bs-ride="carousel">
+<div id="artCarousel" class="carousel slide bg-black" data-bs-ride="carousel">
   <div class="carousel-inner">
-
     <div class="carousel-item active">
       <div class="row g-0 position-relative">
         <div class="hero-content-container col-12 col-lg-5 d-flex align-items-center pt-2 p-lg-0 hero-col position-relative" style="background-color: #740218;">
@@ -15,6 +14,7 @@
          <div class="overlay d-flex gap-2">
           <%= cl_image_tag("ytppvyxk8sgbzhorwikw", width: 600, height: 600, crop: :fill, gravity: :center, class: "img-fluid") %>
           <%= cl_image_tag("hvfwli2cmednrmthtye9", width: 600, height: 600, crop: :fill, gravity: :center, class: "img-fluid") %>
+          <%= link_to "Explore Gallery", galleries_path, class: "btn btn-purple position-absolute bottom-0 start-50 translate-middle-x mb-3" %>
          </div>
         </div>
       </div>
@@ -33,6 +33,7 @@
         <div class="col-12 col-lg-7">
           <div class="overlay">
             <img class="img-fluid" src="//cdn.artmajeur.com/img/home/slider/fusion/image.png" alt="Online Art Gallery">
+            <%= link_to "Discover All Artworks", galleries_path, class: "btn btn-purple position-absolute bottom-0 start-50 translate-middle-x mb-3" %>
           </div>
         </div>
       </div>
@@ -48,4 +49,45 @@
     <span class="carousel-control-next-icon"></span>
     <span class="visually-hidden">Next</span>
   </button>
+</div>
+
+<div class="bg-black py-5">
+  <div class="bg-white py-5 rounded-4 mx-3 mx-md-5">
+    <div class="container-home home-card py-5 rounded-4 mx-3 mx-md-5">
+      <h2 class="mb-3 text-uppercase small fw-medium f-2 text-black">Trends: Our selection of original artworks</h2>
+      <h3 class="h2 text-uppercase fw-bold mb-4 text-black">Featured Artists</h3>
+
+      <div class="row g-4">
+        <div class="col-12 col-sm-6 col-lg-4">
+          <div class="card border-0 shadow-sm overflow-hidden position-relative">
+            <%= cl_image_tag("pdgoevmgmqwijto0bqkh", crop: :fill, width: 600, height: 400, gravity: :center, class: "card-img-top") %>
+            <div class="card-body text-white bg-dark bg-opacity-75 position-absolute bottom-0 start-0 w-100">
+              <h5 class="card-title mb-0">Iannis Culita</h5>
+              <small class="text-light">🇷🇴 Romania</small>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-sm-6 col-lg-4">
+          <div class="card border-0 shadow-sm overflow-hidden position-relative">
+            <%= cl_image_tag("dmrpbawtzz9m0ulnw4ey", crop: :fill, width: 600, height: 400, gravity: :auto, class: "card-img-top") %>
+            <div class="card-body text-white bg-dark bg-opacity-75 position-absolute bottom-0 start-0 w-100">
+              <h5 class="card-title mb-0">Maria Fernandes Quintana</h5>
+              <small class="text-light">🇪🇸 Spain</small>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-sm-6 col-lg-4">
+          <div class="card border-0 shadow-sm overflow-hidden position-relative">
+            <%= cl_image_tag("nbscmd41ptqlv3vcqprt", crop: :fill, width: 600, height: 400, gravity: :center, class: "card-img-top") %>
+            <div class="card-body text-white bg-dark bg-opacity-75 position-absolute bottom-0 start-0 w-100">
+              <h5 class="card-title mb-0">Diana Culita</h5>
+              <small class="text-light">🇬🇧 United Kingdom</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
