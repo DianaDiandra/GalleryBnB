@@ -1,17 +1,21 @@
-<h1>All Galleries</h1>
+<h1 class="mb-2 text-center text-black">Discover Our Artists</h1>
+<p class="mb-4 text-center text-muted">
+  Explore a diverse collection of creative talents—from actors and dancers to visual and makeup artists. Each profile highlights unique stories, artistic journeys, and featured work. Browse the gallery to get inspired and connect with the vibrant world of contemporary artistry.
+</p>
 
-<div class="cards">
-  <div class="row row-cols-1 row-cols-md-3 g-4">
+
+<div class="container-fluid bg-white py-5 cards">
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4 justify-content-center">
     <% @galleries.each do |gallery| %>
-      <div class="col">
-        <div class="gallery-grid position-relative text-center text-white">
+      <div class="col" style="max-width: 300px;">
+        <div class="card border-0 shadow h-100 bg-white rounded-4 overflow-hidden">
           <% if gallery.image.attached? %>
-            <%= image_tag url_for(gallery.image), width: 400, height: 300, alt: gallery.artist %>
+            <%= image_tag url_for(gallery.image), class: "card-img-top", alt: gallery.artist, style: "height: 200px; object-fit: cover;" %>
           <% end %>
-          <div class="gallery-content position-absolute top-50 start-50 translate-middle text-center bg-dark bg-opacity-50 p-2 rounded">
-            <h5><%= gallery.artist %></h5>
-            <p class="mb-1"><%= gallery.description %></p>
-            <small><%= gallery.date.strftime("%B %d, %Y") if gallery.date %></small>
+          <div class="card-body p-3">
+            <h5 class="card-title mb-1"><%= gallery.artist %></h5>
+            <p class="card-text mb-2"><%= gallery.description %></p>
+            <small class="text-muted"><%= gallery.date.strftime("%B %d, %Y") if gallery.date %></small>
           </div>
         </div>
       </div>

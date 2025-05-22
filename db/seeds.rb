@@ -1,45 +1,48 @@
 # This file should ensure the existence of records required to run the application in every environment (production,
 # development, test). The code here should be idempotent so that it can be executed at any point in every environment.
 # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Example:
-#
-#   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
-#     MovieGenre.find_or_create_by!(name: genre_name)
-#   end
 # require 'open-uri'
 
-# artists = [
-#   {
-#     name: "Lena Morandi",
-#     bio: "A self-taught Italian painter who explores abstraction with vibrant palettes.",
-#     image_url: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=800&q=80&auto=format",
-#     created_at: "2024-11-01"
-#   },
-#   {
-#     name: "Theo Marquez",
-#     bio: "A former architect turned sculptor, crafting minimalist stone forms.",
-#     image_url: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=800&q=80&auto=format",
-#     created_at: "2024-12-15"
-#   },
-#   {
-#     name: "Amira Solé",
-#     bio: "Blending Berber tradition with digital textures to preserve memory.",
-#     image_url: "https://images.unsplash.com/photo-1581368125306-27b0c8391d83?w=800&q=80&auto=format",
-#     created_at: "2025-01-10"
-#   }
-# ]
+require 'open-uri'
 
-# artists.each do |attrs|
-#   artist = Artist.find_or_create_by!(name: attrs[:name]) do |a|
-#     a.bio = attrs[:bio]
-#     a.created_at = attrs[:created_at]
-#   end
+puts "Cleaning up database..."
+Gallery.destroy_all
+puts "Seeding database..."
 
-#   next if artist.image.attached?
+[
+  {
+    artist: "Iannis Culita",
+    description: "An innovative architecture artist celebrated for bold, experimental spatial designs.",
+    date: "2024-10-01",
+    image_url: "https://res.cloudinary.com/dkb0r20o0/image/upload/w_1000,ar_1:1,c_fill,g_auto,e_art:hokusai/v1747942145/WhatsApp_Image_2025-05-22_at_20.28.07_tglq1r.jpg"
+  },
+  {
+    artist: "Maria Fernandez Quintana",
+    description: "A seasoned theatre makeup artist crafting transformative stage looks.",
+    date: "2024-10-05",
+    image_url: "https://res.cloudinary.com/dkb0r20o0/image/upload/w_1000,ar_1:1,c_fill,g_auto,e_art:hokusai/v1747942458/image1_1_vqfazg.jpg"
+  },
+  {
+    artist: "Diana Culita",
+    description: "A dynamic performer blending acting and dance in expressive stage roles.",
+    date: "2024-10-10",
+    image_url: "https://res.cloudinary.com/dkb0r20o0/image/upload/v1747941925/qidmzpzaex8voqntymow.jpg"
+  },
+  {
+    artist: "Ethan Thanner",
+    description: "A charismatic musical theatre actor with a passion for storytelling through song and movement.",
+    date: "2024-10-15",
+    image_url: "https://res.cloudinary.com/dkb0r20o0/image/upload/w_1000,ar_1:1,c_fill,g_auto,e_art:hokusai/v1747942467/image0_1_nohenv.jpg"
+  }
+].each do |attrs|
+  gallery = Gallery.find_or_initialize_by(artist: attrs[:artist])
+  gallery.description = attrs[:description]
+  gallery.date = attrs[:date]
 
-#   file = URI.open(attrs[:image_url])
-#   artist.image.attach(io: file, filename: "#{attrs[:name].parameterize}.jpg", content_type: 'image/jpeg')
-#   artist.touch(:created_at)
-#   puts "Seeded artist: #{artist.name}"
-# end
+  unless gallery.image.attached?
+    file = URI.open(attrs[:image_url])
+    gallery.image.attach(io: file, filename: "#{attrs[:artist].parameterize}.jpg", content_type: "image/jpeg")
+  end
+
+  gallery.save! 
+end
