@@ -1,16 +1,32 @@
 <div class="artist-profile-container">
-  <div class="header-section">
-    <div class="artist-image">
+  <div class="header-section d-flex flex-wrap align-items-center mb-4">
+    <div class="artist-image me-4">
       <% if @gallery.image.attached? %>
-        <%= image_tag url_for(@gallery.image), alt: @gallery.artist %>
+        <%= image_tag url_for(@gallery.image), alt: @gallery.artist, class: "img-fluid rounded-3", style: "max-width: 300px;" %>
       <% end %>
     </div>
     <div class="artist-info">
-      <h1><%= @gallery.artist %></h1>
-      <p><%= @gallery.date.strftime("%B %d, %Y") if @gallery.date %></p>
+      <h1 class="fw-bold"><%= @gallery.artist %></h1>
+      <p class="text-muted"><%= @gallery.date.strftime("%B %d, %Y") if @gallery.date %></p>
     </div>
   </div>
 </div>
-<div class="description-section">
-  <p><%= @gallery.description %></p>
+
+<div class="description-section mb-5">
+  <p class="fs-5"><%= @gallery.description %></p>
 </div>
+
+<% if @gallery.photos.attached? %>
+  <div class="gallery-section">
+    <h2 class="h4 fw-semibold mb-4 text-black">Gallery</h2>
+    <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-4">
+      <% @gallery.photos.each do |photo| %>
+        <div class="col">
+          <div class="photo-card p-2 bg-white rounded-3 shadow-sm h-100">
+            <%= image_tag url_for(photo), class: "img-fluid rounded-2 w-100", alt: "#{@gallery.artist} artwork" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<% end %>
