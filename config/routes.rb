@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   get "/messages", to: "inquiries#index", as: :messages
 
   resources :galleries, only: [:index, :show, :create] do
-    resources :inquiries, only: [:create, :destroy]
+    resources :inquiries, only: [:index, :create, :destroy]
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
