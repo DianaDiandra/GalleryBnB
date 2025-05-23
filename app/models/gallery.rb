@@ -1,6 +1,7 @@
 class Gallery < ApplicationRecord
   has_one_attached :image
   has_many_attached :photos
+  has_many :inquiries, dependent: :destroy
 
   validates :artist, presence: true
   validates :description, presence: true

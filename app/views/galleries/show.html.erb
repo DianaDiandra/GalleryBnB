@@ -30,3 +30,21 @@
     </div>
   </div>
 <% end %>
+
+<div class="inquiry-form bg-light p-4 rounded shadow-sm mt-5">
+  <h4 class="mb-3">Send a Message to <%= @gallery.artist %></h4>
+
+  <%= simple_form_for [@gallery, Inquiry.new] do |f| %>
+    <div class="row">
+      <div class="col-md-6">
+        <%= f.input :name, label: "Your Name", required: true %>
+      </div>
+      <div class="col-md-6">
+        <%= f.input :email, label: "Your Email", required: true %>
+      </div>
+    </div>
+    <%= f.input :message, as: :text, label: "Message", required: true, input_html: { rows: 5 } %>
+
+    <%= f.button :submit, "Send Message", class: "btn btn-primary mt-2" %>
+  <% end %>
+</div>
