@@ -3,8 +3,10 @@
     <%= link_to root_path, class: "navbar-brand" do %>
       <%= cl_image_tag("rzxn25ntiypxkjxx4c0i", width: 50, height: 50, crop: :fill, class: "d-inline-block align-top") %>
     <% end %>
-    <div class="mx-auto">
-      <span class="navbar-text text-white fw-bold fs-4">GalleryBnB</span>
+   <div class="mx-auto">
+      <%= link_to root_path, class: "navbar-text text-white fw-bold fs-4 text-decoration-none" do %>
+        GalleryBnB
+      <% end %>
     </div>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -17,9 +19,20 @@
           <li class="nav-item active">
             <%= link_to "Home", root_path, class: "nav-link" %>
           </li>
-          <li class="nav-item">
-            <%= link_to "Messages", "#", class: "nav-link" %>
+          <li class="nav-item position-relative">
+            <%= link_to messages_path, class: "nav-link d-flex align-items-center gap-1 position-relative" do %>
+              <i class="fas fa-envelope position-relative">
+                <% if @unread_messages_count.to_i > 0 %>
+                  <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                    <%= @unread_messages_count %>
+                    <span class="visually-hidden">unread messages</span>
+                  </span>
+                <% end %>
+              </i>
+              Messages
+            <% end %>
           </li>
+
           <li class="nav-item dropdown">
           <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <%= cl_image_tag("mnljzu26h8hj59ovkzhl", class: "avatar", alt: "dropdown menu") %>
