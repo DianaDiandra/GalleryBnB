@@ -20,14 +20,16 @@
             <%= link_to "Home", root_path, class: "nav-link" %>
           </li>
           <li class="nav-item position-relative">
-            <%= link_to messages_path, class: "nav-link position-relative" do %>
+            <%= link_to messages_path, class: "nav-link d-flex align-items-center gap-1 position-relative" do %>
+              <i class="fas fa-envelope position-relative">
+                <% if @unread_messages_count.to_i > 0 %>
+                  <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                    <%= @unread_messages_count %>
+                    <span class="visually-hidden">unread messages</span>
+                  </span>
+                <% end %>
+              </i>
               Messages
-              <% if @unread_messages_count.to_i > 0 %>
-                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                  <%= @unread_messages_count %>
-                  <span class="visually-hidden">unread messages</span>
-                </span>
-              <% end %>
             <% end %>
           </li>
 
