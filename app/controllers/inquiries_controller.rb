@@ -1,8 +1,12 @@
 class InquiriesController < ApplicationController
+  before_action :authenticate_user!
+
+  def index
+    @inquiries = current_user.received_inquiries.includes(:gallery)
+  end
   def create
     @gallery = Gallery.find(params[:gallery_id])
-    @inquiry = Inquiry.new(inquiry_params)
-    @inquiry.gallery = @gallery
+    @inquiry = @gallery.inquiries.new(inquiry_params)
     if @inquiry.save
       redirect_to gallery_path(@gallery)
     else

@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
-  devise_for :users
   root to: "pages#home"
+
+  devise_for :users
+  get "/messages", to: "inquiries#index", as: :messages
+
   resources :galleries, only: [:index, :show, :create] do
     resources :inquiries, only: [:create, :destroy]
   end

@@ -1,0 +1,8 @@
+<h2>Your Messages</h2>
+<% @inquiries.each do |inquiry| %>
+  <div class="card mb-3 p-3">
+    <strong>From:</strong> <%= inquiry.name %> (<%= inquiry.email %>)<br>
+    <strong>Regarding:</strong> <%= inquiry.gallery.artist %><br>
+    <p><%= inquiry.message %></p>
+  </div>
+<% end %>
